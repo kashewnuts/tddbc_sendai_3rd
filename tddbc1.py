@@ -3,6 +3,7 @@
 
 import unittest
 
+
 class TestTddbc1(unittest.TestCase):
 
     def test_lower_endpoint(self):
@@ -37,13 +38,15 @@ class TestTddbc1(unittest.TestCase):
 
     def test_contains_5(self):
         i = Interval(3, 8)
-        self.assertEquals(i.contains(5), True)
+        self.assertTrue(i.contains(5))
 
     def test_contains_1(self):
         i = Interval(3, 8)
-        self.assertEquals(i.contains(1), False)
+        self.assertFalse(i.contains(1))
+
 
 class Interval(object):
+
     def __init__(self, lower, upper):
         if upper < lower:
             raise TypeError

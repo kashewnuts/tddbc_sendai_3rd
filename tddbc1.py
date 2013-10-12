@@ -4,7 +4,7 @@
 import unittest
 
 
-class TestTddbc1(unittest.TestCase):
+class TestInterval(unittest.TestCase):
 
     def test_lower_endpoint(self):
         with self.assertRaises(TypeError):

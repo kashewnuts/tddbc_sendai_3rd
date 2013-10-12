@@ -46,11 +46,11 @@ class TestTddbc1(unittest.TestCase):
 
     def test_equals_3_8(self):
         i = Interval(3, 8)
-        self.assertTrue(i.equeals(Interval(3, 8)))
+        self.assertEquals(i, Interval(3, 8))
 
     def test_equals_1_6(self):
         i = Interval(3, 8)
-        self.assertFalse(i.equeals(Interval(1, 6)))
+        self.assertNotEquals(i, Interval(1, 6))
 
 
 class Interval(object):
@@ -77,12 +77,13 @@ class Interval(object):
         else:
             return False
 
-    def equeals(self, closedinterval):
+    def __eq__(self, closedinterval):
         if (self._lower == closedinterval.lower() and
                 self._upper == closedinterval.upper()):
             return True
         else:
             return False
+
 
 if __name__ == '__main__':
     unittest.main()

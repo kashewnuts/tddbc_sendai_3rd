@@ -35,13 +35,13 @@ class TestTddbc1(unittest.TestCase):
         i = Interval(3, 8)
         self.assertEquals(str(i), "[3,8]")
 
-    def test_contains(self):
+    def test_contains_5(self):
         i = Interval(3, 8)
         self.assertEquals(i.contains(5), True)
 
-    def test_contains2(self):
+    def test_contains_1(self):
         i = Interval(3, 8)
-        self.assertEquals(i.contains(-1), False)
+        self.assertEquals(i.contains(1), False)
 
 class Interval(object):
     def __init__(self, lower, upper):
@@ -60,8 +60,8 @@ class Interval(object):
     def __str__(self):
         return "[%d,%d]" % (self._lower, self._upper)
 
-    def contains(self, c):
-        if self._lower <= c <= self._upper:
+    def contains(self, value):
+        if self._lower <= value <= self._upper:
             return True
         else:
             return False

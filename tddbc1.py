@@ -44,6 +44,14 @@ class TestTddbc1(unittest.TestCase):
         i = Interval(3, 8)
         self.assertFalse(i.contains(1))
 
+    def test_equals_3_8(self):
+        i = Interval(3, 8)
+        self.assertTrue(i.equeals(Interval(3, 8)))
+
+    def test_equals_1_6(self):
+        i = Interval(3, 8)
+        self.assertFalse(i.equeals(Interval(1, 6)))
+
 
 class Interval(object):
 
@@ -65,6 +73,13 @@ class Interval(object):
 
     def contains(self, value):
         if self._lower <= value <= self._upper:
+            return True
+        else:
+            return False
+
+    def equeals(self, closedinterval):
+        if (self._lower == closedinterval.lower() and
+                self._upper == closedinterval.upper()):
             return True
         else:
             return False

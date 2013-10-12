@@ -15,10 +15,10 @@ class TestTddbc1(unittest.TestCase):
 
 class Interval(object):
     def __init__(self, lower):
-        self.l = lower
+        self._lower = lower
 
     def lower(self):
-        return self.l
+        return self._lower
 
 if __name__ == '__main__':
     unittest.main()

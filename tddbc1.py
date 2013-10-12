@@ -6,20 +6,30 @@ import unittest
 class TestTddbc1(unittest.TestCase):
 
     def test_lower_endpoint(self):
-        self.assertRaises(TypeError, Interval, ())
+        with self.assertRaises(TypeError):
+            Interval()
 
     def test_lower_endpoint_8(self):
-        self.assertRaises(TypeError, Interval, (8))
+        with self.assertRaises(TypeError):
+            Interval(8)
+
+    def test_lower_endpoint_4_9(self):
+        i = Interval(4, 9)
+        self.assertEqual(i.lower(), 4)
+        self.assertEqual(i.upper(), 9)
+
+    def test_lower_endpoint_3_8(self):
+        i = Interval(3, 8)
+        self.assertEqual(i.lower(), 3)
+        self.assertEqual(i.upper(), 8)
 
     def test_lower_endpoint_9_4(self):
-        i = Interval(9, 4)
-        self.assertEqual(i.lower(), 9)
-        self.assertEqual(i.upper(), 4)
+        with self.assertRaises(TypeError):
+            Interval(9, 4)
 
     def test_lower_endpoint_8_3(self):
-        i = Interval(8, 3)
-        self.assertEqual(i.lower(), 8)
-        self.assertEqual(i.upper(), 3)
+        with self.assertRaises(TypeError):
+            Interval(8, 3)
 
     def test_string(self):
         i = Interval(3, 8)
@@ -27,6 +37,9 @@ class TestTddbc1(unittest.TestCase):
 
 class Interval(object):
     def __init__(self, lower, upper):
+        if upper < lower:
+            raise TypeError
+
         self._lower = lower
         self._upper = upper
 

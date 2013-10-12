@@ -21,6 +21,10 @@ class TestTddbc1(unittest.TestCase):
         self.assertEqual(i.lower(), 8)
         self.assertEqual(i.upper(), 3)
 
+    def test_string(self):
+        i = Interval(3, 8)
+        self.assertEquals(i.string(), "[3,8]")
+
 class Interval(object):
     def __init__(self, lower, upper):
         self._lower = lower
@@ -31,6 +35,9 @@ class Interval(object):
 
     def upper(self):
         return self._upper
+
+    def string(self):
+        return "[%d,%d]" % (self._lower, self._upper)
 
 if __name__ == '__main__':
     unittest.main()
